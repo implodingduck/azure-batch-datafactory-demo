@@ -1,0 +1,29 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileName": "@triggerBody().fileName",
+					"folderPath": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input/blobs/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/54509587-f9de-443c-8aa2-c7643e00accc/resourceGroups/rg-datafactory-fun/providers/Microsoft.Storage/storageAccounts/sadatafactoryfun",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

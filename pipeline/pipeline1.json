@@ -1,0 +1,45 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Custom1",
+				"type": "Custom",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": {
+						"value": "@concat('/bin/bash -c \"curl -O https://raw.githubusercontent.com/implodingduck/azure-batch-demo/main/advanced-task.sh && chmod +x advanced-task.sh && ./advanced-task.sh ', pipeline().parameters.fileName, ' sadatafactoryfun\"')",
+						"type": "Expression"
+					},
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureBatch1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"folderPath": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-28T14:03:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
